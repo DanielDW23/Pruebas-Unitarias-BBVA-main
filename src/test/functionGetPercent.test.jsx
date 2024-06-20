@@ -31,6 +31,4 @@ describe("Test funcion percent", () => {
   })
 
 
-
-
 })

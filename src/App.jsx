@@ -1,7 +1,7 @@
 import { Button } from "@mui/material"
 // import { TextField } from "@mui/material"
 // import { Select } from "./components/Select";
-// import { Home } from "./pages/Home";
+import { Home } from "./pages/Home";
 // import ProductList from "./pages/ProductList";
 
 const App = () => {
@@ -19,10 +19,10 @@ const App = () => {
   // ];
   return (
     <div className="full-height flex-center">
-      <Button fullWidth style={{ backgroundColor: 'green', color: 'white'}}>Styled Button</Button>
+      {/* <Button fullWidth style={{ backgroundColor: 'green', color: 'white'}}>Styled Button</Button> */}
       {/* <TextField label="Username" /> */}
       {/* <Select options={mockedOptions} value={'mocked-option-1'}/> */}
-      {/* <Home/> */}
+      <Home/>
       {/* <ProductList /> */}
     </div>
   )
