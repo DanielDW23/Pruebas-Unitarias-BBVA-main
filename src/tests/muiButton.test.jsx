@@ -1,16 +1,14 @@
-import { afterEach, beforeEach, describe, expect, test, vi} from "vitest";
+import { afterEach, beforeEach, describe, expect, test, vi, beforeAll, afterAll} from "vitest";
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Button } from '@mui/material';
 
 describe ('Test button Mui', () => {
   
-  //Se ejecuta una sola vez antes del primer test
+ //Se ejecuta una sola vez antes del primer test
   beforeAll (() => {
 
-
   });
-
 
 // Se ejecuta antes de cada test
   beforeEach(() => {
@@ -18,17 +16,17 @@ describe ('Test button Mui', () => {
     vi.spyOn(console, 'log').mockImplementation(() => {});
   });
 
-
   // Se ejecuta después de cada test
   afterEach(() => {
     //Paramos la escucha de los console log después de cada test
     console.log.mockRestore();
   });
 
-
   //Se ejecuta una sola vez después del último test
   afterAll (() => {
   });
+
+ 
 
   test('render button Mui correct text', () => {
     render(<Button>Click me</Button>);
@@ -43,12 +41,16 @@ describe ('Test button Mui', () => {
     const button = screen.getByRole('button', { name: /Click me/i });
     expect(button).toBeInTheDocument();
     expect(console.log).not.toHaveBeenCalledWith('click')
+    expect(console.log).toHaveBeenCalledTimes(0);
     expect(handleClick).toHaveBeenCalledTimes(0);
     fireEvent.click(button);
     expect(handleClick).toHaveBeenCalledTimes(1);
     expect(console.log).toHaveBeenCalledWith('click')
+    expect(console.log).toHaveBeenCalledTimes(1);
     fireEvent.click(button);
     expect(handleClick).toHaveBeenCalledTimes(2);
+    expect(console.log).toHaveBeenCalledWith('click')
+    expect(console.log).toHaveBeenCalledTimes(2);
   })
 
   test('renders MuiButton with correct styles', () => {
@@ -70,5 +72,6 @@ describe ('Test button Mui', () => {
     fireEvent.click(button);
     expect(handleClick).toHaveBeenCalledTimes(0);
     expect(console.log).not.toHaveBeenCalledWith('click')
+    expect(console.log).toHaveBeenCalledTimes(0);
   });
 })
